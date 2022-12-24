@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import Filter from "./components/Filter";
 import Movie from "./components/Movie";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="w-full py-[5%]">
+      <Filter />
       <div className="gap-[2rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 lg:px-[250px]">
           {popular.map((movie) => {
             return <Movie movie={movie} key={movie.id}/>
