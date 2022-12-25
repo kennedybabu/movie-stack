@@ -4,6 +4,8 @@ import Movie from "./components/Movie";
 
 function App() {
   const [popular, setPopular] = useState([])
+  const [filtered, setFiltered] = useState([])
+  const [activeGenre, setActiveGenre] = useState(0)
 
 
   useEffect(() => {
@@ -15,14 +17,15 @@ function App() {
     const movies = await data.json()
     console.log(movies)
     setPopular(movies.results)
+    setFiltered(movies.results)
   }
 
 
   return (
     <div className="w-full py-[5%]">
-      <Filter />
+      <Filter popular={popular} setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
       <div className="gap-[2rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 lg:px-[250px]">
-          {popular.map((movie) => {
+          {filtered.map((movie) => {
             return <Movie movie={movie} key={movie.id}/>
           })}
       </div>
