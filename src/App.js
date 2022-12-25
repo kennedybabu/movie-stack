@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Filter from "./components/Filter";
 import Movie from "./components/Movie";
+import { motion } from "framer-motion";
 
 function App() {
   const [popular, setPopular] = useState([])
@@ -24,11 +25,11 @@ function App() {
   return (
     <div className="w-full py-[5%]">
       <Filter popular={popular} setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre}/>
-      <div className="gap-[2rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 lg:px-[250px]">
+      <motion.div layout className="gap-[2rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 lg:px-[250px]">
           {filtered.map((movie) => {
             return <Movie movie={movie} key={movie.id}/>
           })}
-      </div>
+      </motion.div>
     </div>
   );
 }
